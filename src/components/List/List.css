@@ -1,0 +1,29 @@
+.List {
+    width: 100%;
+    margin: 10px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+}
+
+.Users-List {
+    list-style-type:none;
+    margin: 0px 20px 0px 0px;
+}
+
+    .List-item {
+        display: block;
+        padding:10px 20px;
+
+        text-align: left;
+
+        cursor: pointer;
+    }
+
+    .List-item.active {
+        background-color: beige;
+    }
+
