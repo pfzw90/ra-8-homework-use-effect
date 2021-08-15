@@ -25,6 +25,4 @@ export default function Details(props) {
                             <div className="position">Position: {currentUser.details.position}</div>
                         </div>
                     )
-      
-    
 }
