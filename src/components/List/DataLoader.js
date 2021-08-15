@@ -1,8 +1,7 @@
 
-export default function dataLoader(file, setLoading, setData)  {
+export default function dataLoader(file)  {
     return async function loadData() {
-
-        setLoading(true)
+        let res;
         try {
             await fetch(
                 file,
@@ -15,13 +14,13 @@ export default function dataLoader(file, setLoading, setData)  {
             ).then(
                 (result) => result.json())
                 .then((data) => {
-                    setData(data);
+                    res = data;
             })
 
         } catch(e) {
-            console.log(e)
+            res = `Ошибка: ${e}`
         } finally {
-            setLoading(false)
+            return res;
         }
     }
 };

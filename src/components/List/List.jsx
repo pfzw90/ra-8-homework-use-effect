@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import loadData from './LoadData';
+import dataLoader from './DataLoader';
 import Details from './Details/Details'
 import './List.css'
 
@@ -10,9 +10,14 @@ export default function List() {
     const [currentUser,setCurrentUser] = useState(null);
     const [userList, setUserList] = useState([])
 
+    const fetchList = dataLoader('/data/users.json');
+
     useEffect(() => {
-        const fetchList = loadData('/data/users.json', setLoading, setUserList);
-        fetchList();
+        setLoading(true)
+        fetchList().then(data => {
+            setUserList(data);
+        });
+        setLoading(false)
         return;
     },[]);
     

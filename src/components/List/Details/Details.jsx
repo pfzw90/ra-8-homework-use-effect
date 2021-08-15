@@ -1,16 +1,16 @@
 import { useEffect,useState } from "react";
-import dataLoader from './../LoadData'
+import dataLoader from '../DataLoader'
 
 export default function Details(props) {
     const [isLoading, setLoading] = useState(true);
-    const [currentUser, setUser] = useState(null);
-
+    const [currentUser, setUser] = useState(null); 
+   
     useEffect(() => {
-        
-        const loadUser = dataLoader(`/data/${props.id}.json`, setLoading, setUser);
-        loadUser();      
-           
-
+        setLoading(true)
+        dataLoader(`/data/${props.id}.json`)().then(data=>{
+            setUser(data)
+            setLoading(false)  
+        });                
         return;
     },[props.id])
 
